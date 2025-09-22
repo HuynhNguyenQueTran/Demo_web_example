@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Quiz</title>
+  <link rel="stylesheet" href="home.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Poppins:wght@300;400&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <!-- ✅ NỀN -->
+  <div class="overlay-background"></div>
+
+  <!-- ✅ ẢNH MÈO -->
+<div class="background-container">
+  <img src="assets/see.gif" alt="See Gif" 
+       style="width:66%; height:auto; display:block; margin:0 auto;" />
+</div>
+
+
+  <!-- ✅ CHÀO MỪNG -->
+  <div class="welcome-text">
+    <div class="welcome-line">Thách thức độ KHỜ của chị nè :>>!</div>
+    <div class="intro-line">Hehehehe</div>
+    <button class="start-btn" onclick="batDauQuiz()">Nhào vô</button>
+  </div>
+
+  <!-- ✅ CÂU ĐỐ -->
+  <div class="popup quiz-popup" id="quizPopup">
+    <div class="popup-content" id="quizContent">
+      <div id="phanHoi"></div>
+    </div>
+  </div>
+
+  <!-- ✅ PHÁO HOA TRƯỚC CÂU YES/NO -->
+  <div class="fireworks-before-yesno" id="fireworksGif" style="display: none;">
+    <img src="assets/fireworks-15757_256.gif" alt="Fireworks" />
+  </div>
+
+  <!-- ✅ NHẠC NỀN -->
+  <audio id="quizBgm" autoplay loop>
+    <source src="assets/quiz.mp3" type="audio/mpeg" />
+    Trình duyệt của bạn không hỗ trợ audio.
+  </audio>
+
+  <!-- ✅ ÂM THANH ĐÚNG -->
+  <audio id="correctSound" src="assets/fireworks-29629.mp3" preload="auto"></audio>
+
+  <!-- ✅ SCRIPT -->
+  <script src="home.js"></script>
+  <script async src="https://tenor.com/embed.js"></script>
+  <script>
+    function batDauQuiz() {
+      const bgm = document.getElementById('quizBgm');
+      bgm.play().catch(e => console.warn("Trình duyệt chặn autoplay:", e));
+      hienQuiz();
+    }
+
+    // Nếu muốn tự phát nhạc nền ngay khi tải xong
+    window.addEventListener('DOMContentLoaded', () => {
+      const bgm = document.getElementById('quizBgm');
+      bgm.play().catch(e => console.warn("Autoplay bị chặn: ", e));
+    });
+  </script>
+
+  <audio id="correctSound">
+    <source src="assets/fireworks-29629.mp3" type="audio/mpeg" />
+  </audio>
+
+</body>
+
+</html>

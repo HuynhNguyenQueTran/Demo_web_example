@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Final Day!</title>
+  <link rel="stylesheet" href="HB.css">
+</head>
+
+<body>
+  <!-- Nhạc nền mở đầu -->
+  <!-- <audio id="music" src="audio/happy-birthday.mp3" loop></audio> -->
+
+  <!-- Nhạc sau khi submit -->
+  <audio id="hbMusic" src="assets/music.mp3" loop></audio>
+
+  <!-- Tiêu đề -->
+  <div style="text-align: center;">
+    <h1 id="message">Sao sao thấy mình thông minh chưa !</h1>
+  </div>
+
+  <!-- Form nhập -->
+  <div id="birthday-form" class="form-container">
+    <h2>Nhập sổ hộ khẩu cho chuẩn nha !</h2>
+    <label for="nameInput">Tên cúng cơm</label><br />
+    <input type="text" id="nameInput" placeholder="Tên"><br />
+
+    <label for="dobInput">Sinh khi nào thì nhập khi đấy</label><br />
+    <input type="text" id="dobInput" placeholder="Ví dụ 01/01/2000"><br />
+
+    <img src="assets/he.jpg" width="450" alt="Gif vui nhộn" />
+    <button id="submitBtn">lẹ lẹ đi</button>
+  </div>
+
+  <!-- Lời chúc -->
+  <div id="personal-wishes" class="birthday-wishes" style="display: none;">
+    <img src="assets/chuc.jpg" class="congrats-gif" alt="Chúc mừng" />
+    <p id="wishMessage"></p>
+  </div>
+
+  <!-- Canvas pháo hoa -->
+  <canvas id="fireworksCanvas"></canvas>
+
+  <script src="HB.js"></script>
+  <script>
+    // Auto play nhạc mở đầu
+    window.onload = () => {
+      const music = document.getElementById("music");
+      if (music) {
+        music.play().catch(() => {
+          console.log("Trình duyệt chặn autoplay.");
+        });
+      }
+    };
+
+    // Khi submit
+    document.getElementById("submitBtn").addEventListener("click", () => {
+      const music = document.getElementById("music");
+      const hbMusic = document.getElementById("hbMusic");
+
+      if (music) {
+        music.pause();
+        music.currentTime = 0;
+      }
+
+      hbMusic.play().catch(() => {
+        console.log("Không thể phát nhạc HB.mp3.");
+      });
+
+      if (typeof submitBirthdayInfo === "function") {
+        submitBirthdayInfo();
+      }
+    });
+  </script>
+</body>
+
+</html>
